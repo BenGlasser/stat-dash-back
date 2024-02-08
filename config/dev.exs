@@ -5,7 +5,7 @@ config :stat_dash_back, StatDashBack.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "stat_dash_back_dev",
+  database: "stat_dash",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

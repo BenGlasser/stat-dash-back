@@ -34,6 +34,7 @@ defmodule StatDashBack.MixProject do
     [
       {:absinthe, "~> 1.7"},
       {:absinthe_plug, "~> 1.5"},
+      {:confex, "~> 3.0"},
       {:phoenix, "~> 1.7.11"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.10"},
