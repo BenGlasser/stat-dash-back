@@ -67,3 +67,8 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+# Riot Client Configuration
+config :stat_dash_back, StatDashBack.RiotClient,
+  api_key: "RGAPI-db0bb91c-a4c1-4d8c-8f96-882ccc68c9dd",
+  base_url: "https://na1.api.riotgames.com"
