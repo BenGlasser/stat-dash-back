@@ -4,9 +4,7 @@ defmodule StatDashBackWeb.Resolvers.Summoner do
   alias StatDashBack.RiotClient.DTO.LeagueEntryDTO
   alias StatDashBack.RiotClient.DTO.MiniSeriesDTO
 
-  def get_summoner_by_name(%{name: name}, args) do
-    IO.inspect(args)
-
+  def get_summoner_by_name(%{name: name}, _ctx) do
     case SummonerV4.get_summoner_by_name(name) do
       {:ok, %Summoner{} = summoner} ->
         {:ok, summoner}

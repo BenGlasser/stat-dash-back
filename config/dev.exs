@@ -27,7 +27,8 @@ config :stat_dash_back, StatDashBackWeb.Endpoint,
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:stat_dash_back, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:stat_dash_back, ~w(--watch)]}
-  ]
+  ],
+  origins: ["http://localhost:3000"]
 
 # ## SSL Support
 #

@@ -6,8 +6,8 @@ defmodule StatDashBack.RiotClient.Base do
     quote do
       use HTTPoison.Base
 
-      @riot_base_url "https://na1.api.riotgames.com"
-      @riot_api_key "RGAPI-81244ccc-867f-421e-a541-bdd248621248"
+      @riot_base_url Application.get_env(:riot_client, :api_url, "https://na1.api.riotgames.com")
+      @riot_api_key Application.get_env(:riot_client, :api_key)
 
       def process_request_url(url) do
         @riot_base_url <> url

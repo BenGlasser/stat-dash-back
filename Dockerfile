@@ -14,3 +14,5 @@ RUN mix archive.install hex phx_new
 WORKDIR /app
 ADD . /app
 EXPOSE 4000
+
+ENTRYPOINT [ "mix", "phx.server" ]

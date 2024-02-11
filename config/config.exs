@@ -20,7 +20,8 @@ config :stat_dash_back, StatDashBackWeb.Endpoint,
     layout: false
   ],
   pubsub_server: StatDashBack.PubSub,
-  live_view: [signing_salt: "4RxjC1NH"]
+  live_view: [signing_salt: "4RxjC1NH"],
+  origins: ["http://localhost:3000"]
 
 # Configures the mailer
 #
@@ -60,6 +61,12 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+# Configure Riot Client
+config :riot_client,
+  api_url: "https://na1.api.riotgames.com",
+  api_key: "RGAPI-9731ddd5-8b21-46a1-95b5-a34fa0c0dad0"
+
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
