@@ -6,8 +6,8 @@ defmodule StatDashBack.RiotClient.Base do
     quote do
       use HTTPoison.Base
 
-      @riot_base_url Application.get_env(:riot_client, :api_url, "https://na1.api.riotgames.com")
-      @riot_api_key Application.get_env(:riot_client, :api_key)
+      @riot_base_url Application.compile_env(:riot_client, :api_url, "https://na1.api.riotgames.com")
+      @riot_api_key Application.compile_env(:riot_client, :api_key)
 
       def process_request_url(url) do
         @riot_base_url <> url
@@ -17,6 +17,10 @@ defmodule StatDashBack.RiotClient.Base do
         [
           {"X-Riot-Token", @riot_api_key}
         ]
+      end
+
+      def ok(term) do
+        {:ok, term}
       end
     end
   end

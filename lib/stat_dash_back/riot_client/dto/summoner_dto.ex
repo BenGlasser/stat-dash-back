@@ -1,4 +1,4 @@
-defmodule StatDashBack.RiotClient.DTO.Summoner do
+defmodule StatDashBack.RiotClient.DTO.SummonerDTO do
   @moduledoc """
   This module defines the Summoner struct and related types.
   """
@@ -10,6 +10,7 @@ defmodule StatDashBack.RiotClient.DTO.Summoner do
     :profile_icon_id,
     :revision_date,
     :summoner_level
+
   ]
 
   @typedoc """
@@ -32,23 +33,15 @@ defmodule StatDashBack.RiotClient.DTO.Summoner do
           summoner_level: Integer.t()
         }
 
-  def from_map(%{
-        "id" => id,
-        "accountId" => account_id,
-        "puuid" => puuid,
-        "name" => name,
-        "profileIconId" => profile_icon_id,
-        "revisionDate" => revision_date,
-        "summonerLevel" => summoner_level
-      }) do
+  def from_map(%{} = summoner) do
     %__MODULE__{
-      id: id,
-      account_id: account_id,
-      puuid: puuid,
-      name: name,
-      profile_icon_id: profile_icon_id,
-      revision_date: revision_date,
-      summoner_level: summoner_level
+      id: Map.get(summoner, :id, Map.get(summoner, "id", "")),
+      account_id: Map.get(summoner, :account_id, Map.get(summoner, "accountId", "")),
+      puuid: Map.get(summoner, :puuid, Map.get(summoner, "puuid", "")),
+      name: Map.get(summoner, :name, Map.get(summoner, "name", "")),
+      profile_icon_id: Map.get(summoner, :profile_icon_id, Map.get(summoner, "profileIconId", 0)),
+      revision_date: Map.get(summoner, :revision_date, Map.get(summoner, "revisionDate", 0)),
+      summoner_level: Map.get(summoner, :summoner_level, Map.get(summoner, "summonerLevel", 0)),
     }
   end
 end

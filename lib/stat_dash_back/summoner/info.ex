@@ -2,6 +2,9 @@ defmodule StatDashBack.Summoner.Info do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @required [:name]
+  @optional [:level, :rank, :icon, :mastery]
+
   schema "information" do
     field :name, :string
     field :level, :integer
@@ -15,7 +18,7 @@ defmodule StatDashBack.Summoner.Info do
   @doc false
   def changeset(info, attrs) do
     info
-    |> cast(attrs, [:name, :rank, :icon, :level, :mastery])
-    |> validate_required([:name, :rank, :icon, :level, :mastery])
+    |> cast(attrs, @required ++ @optional)
+    |> validate_required(@required)
   end
 end

@@ -1,73 +1,60 @@
 defmodule StatDashBack.RiotClient.DTO.LeagueEntryDTO do
+  alias StatDashBack.RiotClient.DTO.MiniSeriesDTO
+
   defstruct [
-    :leagueId,
-    :summonerId,
-    :summonerName,
-    :queueType,
+    :league_id,
+    :summoner_id,
+    :summoner_name,
+    :queue_type,
     :tier,
     :rank,
-    :leaguePoints,
+    :league_points,
     :wins,
     :losses,
-    :hotStreak,
+    :hot_streak,
     :veteran,
-    :freshBlood,
+    :fresh_blood,
     :inactive,
-    :miniSeries
+    :mini_series
   ]
 
   @type t :: %__MODULE__{
-          leagueId: String.t(),
+          league_id: String.t(),
           # Player's encrypted summonerId.
-          summonerId: String.t(),
-          summonerName: String.t(),
-          queueType: String.t(),
+          summoner_id: String.t(),
+          summoner_name: String.t(),
+          queue_type: String.t(),
           tier: String.t(),
           # The player's division within a tier.
           rank: String.t(),
-          leaguePoints: Integer.t(),
+          league_points: Integer.t(),
           # Winning team on Summoners Rift.
           wins: Integer.t(),
           # Losing team on Summoners Rift.
           losses: Integer.t(),
-          hotStreak: Boolean.t(),
+          hot_streak: Boolean.t(),
           veteran: Boolean.t(),
-          freshBlood: Boolean.t(),
+          fresh_blood: Boolean.t(),
           inactive: Boolean.t(),
-          miniSeries: StatDashBack.RiotClient.DTO.MiniSeriesDTO.t()
+          mini_series: StatDashBack.RiotClient.DTO.MiniSeriesDTO.t()
         }
 
-  def from_map(%{
-        "leagueId" => leagueId,
-        "summonerId" => summonerId,
-        "summonerName" => summonerName,
-        "queueType" => queueType,
-        "tier" => tier,
-        "rank" => rank,
-        "leaguePoints" => leaguePoints,
-        "wins" => wins,
-        "losses" => losses,
-        "hotStreak" => hotStreak,
-        "veteran" => veteran,
-        "freshBlood" => freshBlood,
-        "inactive" => inactive,
-        "miniSeries" => miniSeries
-      }) do
+  def from_map(%{} = league_entry) do
     %__MODULE__{
-      leagueId: leagueId,
-      summonerId: summonerId,
-      summonerName: summonerName,
-      queueType: queueType,
-      tier: tier,
-      rank: rank,
-      leaguePoints: leaguePoints,
-      wins: wins,
-      losses: losses,
-      hotStreak: hotStreak,
-      veteran: veteran,
-      freshBlood: freshBlood,
-      inactive: inactive,
-      miniSeries: StatDashBack.RiotClient.DTO.MiniSeriesDTO.from_map(miniSeries)
+      league_id: Map.get(league_entry, :league_id, Map.get(league_entry, "leagueId")),
+      summoner_id: Map.get(league_entry, :summoner_id, Map.get(league_entry, "summonerId")),
+      summoner_name: Map.get(league_entry, :summoner_name, Map.get(league_entry, "summonerName")),
+      queue_type: Map.get(league_entry, :queue_type, Map.get(league_entry, "queueType")),
+      tier: Map.get(league_entry, :tier, Map.get(league_entry, "tier")),
+      rank: Map.get(league_entry, :rank, Map.get(league_entry, "rank")),
+      league_points: Map.get(league_entry, :league_points, Map.get(league_entry, "leaguePoints")),
+      wins: Map.get(league_entry, :wins, Map.get(league_entry, "wins")),
+      losses: Map.get(league_entry, :losses, Map.get(league_entry, "losses")),
+      hot_streak: Map.get(league_entry, :hot_streak, Map.get(league_entry, "hotStreak")),
+      veteran: Map.get(league_entry, :veteran, Map.get(league_entry, "veteran")),
+      fresh_blood: Map.get(league_entry, :fresh_blood, Map.get(league_entry, "freshBlood")),
+      inactive: Map.get(league_entry, :inactive, Map.get(league_entry, "inactive")),
+      mini_series: Map.get(league_entry, :mini_series, Map.get(league_entry, "miniSeries", [])) |> Enum.map(&MiniSeriesDTO.from_map/1)
     }
   end
 end
