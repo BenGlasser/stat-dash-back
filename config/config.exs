@@ -26,7 +26,7 @@ config :stat_dash_back, StatDashBackWeb.Endpoint,
 config :stat_dash_back,
   riot_api_url_na: "https://na1.api.riotgames.com",
   riot_api_url_americas: "https://americas.api.riotgames.com",
-  riot_api_key: "RGAPI-6ac9c4d8-8c0f-4589-89c9-a15b63ed16b5"
+  riot_api_key: System.get_env("RIOT_API_KEY", "RGAPI-b0655b5a-f11a-4570-bab3-8d550d5a69ec")
 
 # Configures the mailer
 #
@@ -66,8 +66,6 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
-
-# Configure Riot Client
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

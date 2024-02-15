@@ -10,6 +10,7 @@ defmodule StatDashBackWeb.Schema.Types.Summoner do
     field :profile_icon_id, :integer
     field :level, :integer
     field :mastery_score, :integer
+    field :puuid, :string
   end
 
   object :summoner_queries do

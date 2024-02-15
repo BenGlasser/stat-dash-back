@@ -10,7 +10,7 @@ defmodule StatDashBack.RiotClient.Base do
   defmacro __using__(opts \\ []) do
     quote do
       use HTTPoison.Base
-      @riot_api_key Application.compile_env(:riot_client, :api_key)
+      @riot_api_key Application.compile_env(:stat_dash_back, :riot_api_key)
 
       unquote(config(opts))
 

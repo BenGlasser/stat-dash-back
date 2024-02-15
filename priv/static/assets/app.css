@@ -718,6 +718,10 @@ select {
   position: relative;
 }
 
+.flex {
+  display: flex;
+}
+
 .contents {
   display: contents;
 }

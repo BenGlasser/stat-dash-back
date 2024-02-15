@@ -15,7 +15,8 @@ defmodule StatDashBackWeb.Resolvers.Summoner do
             rank: league_entry.rank,
             tier: league_entry.tier,
             profile_icon_id: summoner.profile_icon_id,
-            mastery_score: mastery_score
+            mastery_score: mastery_score,
+            puuid: summoner.puuid
           }}
     else
       {:ok, []} ->

@@ -266,7 +266,7 @@ defmodule StatDashBack.RiotClient.DTO.ParticipantDto do
         objectives_stolen_assists: Map.get(participant, :objectives_stolen_assists, Map.get(participant, "objectivesStolenAssists", 0)),
         participant_id: Map.get(participant, :participant_id, Map.get(participant, "participantId", 0)),
         penta_kills: Map.get(participant, :penta_kills, Map.get(participant, "pentaKills", 0)),
-        perks: Map.get(participant, :perks, Map.get(participant, "perks", %PerksDto{})) |> Enum.map(&PerksDto.from_map/1),
+        perks: Map.get(participant, :perks, Map.get(participant, "perks", %PerksDto{})) |> PerksDto.from_map,
         physical_damage_dealt: Map.get(participant, :physical_damage_dealt, Map.get(participant, "physicalDamageDealt", 0)),
         physical_damage_dealt_to_champions: Map.get(participant, :physical_damage_dealt_to_champions, Map.get(participant, "physicalDamageDealtToChampions", 0)),
         physical_damage_taken: Map.get(participant, :physical_damage_taken, Map.get(participant, "physicalDamageTaken", 0)),

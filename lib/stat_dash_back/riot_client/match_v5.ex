@@ -5,6 +5,8 @@ defmodule StatDashBack.RiotClient.MatchV5 do
 
   use StatDashBack.RiotClient.Base, region: :americas
 
+  alias StatDashBack.RiotClient.DTO.MatchDto
+
   @match_ids_by_puuid_url "/lol/match/v5/matches/by-puuid"
   @match_by_match_id_url "/lol/match/v5/matches"
 
@@ -35,7 +37,7 @@ defmodule StatDashBack.RiotClient.MatchV5 do
   """
   @spec get_match_ids_by_puuid(String.t()) :: {:error, Map.t() | String.t()} | {:ok, List.t()}
   def get_match_ids_by_puuid(puuid, opts \\ []) do
-    url = get_match_ids_by_puuid_url(puuid) |> IO.inspect
+    url = get_match_ids_by_puuid_url(puuid)
 
     query_string = get_opts(opts)
     url = url <> query_string
@@ -55,13 +57,14 @@ defmodule StatDashBack.RiotClient.MatchV5 do
     end
   end
 
-  def get_match_by_match_id(match_id) do
+  def get_match_by_id(match_id) do
     url = @match_by_match_id_url <> "/#{match_id}"
 
     case __MODULE__.get(url) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         body
         |> Poison.decode!
+        |> MatchDto.from_map
         |> ok
 
       # catch non-200 status codes
@@ -72,6 +75,18 @@ defmodule StatDashBack.RiotClient.MatchV5 do
         {:error, reason}
     end
   end
+
+  def get_matches_by_ids(ids) when is_list(ids)  do
+    ids
+    |> Enum.map(&get_match_by_id/1)
+    |> Enum.filter(&is_ok/1)
+    # TODO add some fancy middleware to handle errors rather than just filtering them out ¯\_(ツ)_/¯
+    |> Enum.map(&elem(&1, 1))
+    |> ok
+  end
+
+  defp is_ok({:ok, _}), do: true
+  defp is_ok(_), do: false
 
   defp get_opts([]), do: ""
   defp get_opts(opts) do
