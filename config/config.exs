@@ -68,10 +68,6 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 # Configure Riot Client
-config :riot_client,
-  api_url: "https://na1.api.riotgames.com",
-  api_key: "RGAPI-6ac9c4d8-8c0f-4589-89c9-a15b63ed16b5"
-
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
