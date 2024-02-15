@@ -1,7 +1,7 @@
 defmodule StatDashBack.RiotClient.SummonerV4 do
   use StatDashBack.RiotClient.Base
 
-  alias StatDashBack.RiotClient.DTO.SummonerDTO
+  alias StatDashBack.RiotClient.DTO.SummonerDto
 
   @summoner_by_name_url "/lol/summoner/v4/summoners/by-name"
 
@@ -12,7 +12,7 @@ defmodule StatDashBack.RiotClient.SummonerV4 do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}}  ->
         body
         |> Poison.decode!
-        |> SummonerDTO.from_map
+        |> SummonerDto.from_map
         |> ok
 
       {:ok, %HTTPoison.Response{status_code: 404, body: body}} ->

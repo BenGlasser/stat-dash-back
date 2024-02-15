@@ -1,5 +1,6 @@
-defmodule StatDashBack.RiotClient.DTO.LeagueEntryDTO do
-  alias StatDashBack.RiotClient.DTO.MiniSeriesDTO
+defmodule StatDashBack.RiotClient.DTO.LeagueEntryDto do
+
+  alias StatDashBack.RiotClient.DTO.MiniSeriesDto
 
   defstruct [
     :league_id,
@@ -36,7 +37,7 @@ defmodule StatDashBack.RiotClient.DTO.LeagueEntryDTO do
           veteran: Boolean.t(),
           fresh_blood: Boolean.t(),
           inactive: Boolean.t(),
-          mini_series: StatDashBack.RiotClient.DTO.MiniSeriesDTO.t()
+          mini_series: MiniSeriesDto.t()
         }
 
   def from_map(%{} = league_entry) do
@@ -54,7 +55,7 @@ defmodule StatDashBack.RiotClient.DTO.LeagueEntryDTO do
       veteran: Map.get(league_entry, :veteran, Map.get(league_entry, "veteran")),
       fresh_blood: Map.get(league_entry, :fresh_blood, Map.get(league_entry, "freshBlood")),
       inactive: Map.get(league_entry, :inactive, Map.get(league_entry, "inactive")),
-      mini_series: Map.get(league_entry, :mini_series, Map.get(league_entry, "miniSeries", [])) |> Enum.map(&MiniSeriesDTO.from_map/1)
+      mini_series: Map.get(league_entry, :mini_series, Map.get(league_entry, "miniSeries", [])) |> Enum.map(&MiniSeriesDto.from_map/1)
     }
   end
 end

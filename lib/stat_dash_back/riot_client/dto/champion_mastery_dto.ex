@@ -1,4 +1,4 @@
-defmodule StatDashBack.RiotClient.DTO.ChampionMasteryDTO do
+defmodule StatDashBack.RiotClient.DTO.ChampionMasteryDto do
   defstruct [
     :puuid,
     :championPointsUntilNextLevel,

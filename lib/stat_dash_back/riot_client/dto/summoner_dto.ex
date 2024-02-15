@@ -1,4 +1,4 @@
-defmodule StatDashBack.RiotClient.DTO.SummonerDTO do
+defmodule StatDashBack.RiotClient.DTO.SummonerDto do
   @moduledoc """
   This module defines the Summoner struct and related types.
   """

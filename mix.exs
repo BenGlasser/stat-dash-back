@@ -59,7 +59,8 @@ defmodule StatDashBack.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.2"},
       {:httpoison, "~> 2.2.1"},
-      {:poison, "~> 5.0"}
+      {:poison, "~> 5.0"},
+      {:timex, "~>3.7.11"}
     ]
   end
 

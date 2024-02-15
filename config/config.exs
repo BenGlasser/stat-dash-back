@@ -23,6 +23,11 @@ config :stat_dash_back, StatDashBackWeb.Endpoint,
   live_view: [signing_salt: "4RxjC1NH"],
   origins: ["http://localhost:3000"]
 
+config :stat_dash_back,
+  riot_api_url_na: "https://na1.api.riotgames.com",
+  riot_api_url_americas: "https://americas.api.riotgames.com",
+  riot_api_key: "RGAPI-6ac9c4d8-8c0f-4589-89c9-a15b63ed16b5"
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
@@ -65,7 +70,7 @@ config :phoenix, :json_library, Jason
 # Configure Riot Client
 config :riot_client,
   api_url: "https://na1.api.riotgames.com",
-  api_key: "RGAPI-634cf71f-249f-4cc6-8ce2-3005605a5af2"
+  api_key: "RGAPI-6ac9c4d8-8c0f-4589-89c9-a15b63ed16b5"
 
 
 # Import environment specific config. This must remain at the bottom

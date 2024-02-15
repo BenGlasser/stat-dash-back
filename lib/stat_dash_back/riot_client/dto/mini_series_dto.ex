@@ -1,4 +1,4 @@
-defmodule StatDashBack.RiotClient.DTO.MiniSeriesDTO do
+defmodule StatDashBack.RiotClient.DTO.MiniSeriesDto do
   defstruct [:wins, :losses, :target, :progress, :timeLeftToPlayMillis]
 
   @type t :: %__MODULE__{

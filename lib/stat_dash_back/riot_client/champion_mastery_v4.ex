@@ -1,9 +1,7 @@
 defmodule StatDashBack.RiotClient.ChampionMasteryV4 do
   use StatDashBack.RiotClient.Base
 
-  alias StatDashBack.RiotClient.DTO.ChampionMasteryDTO
-
-  @champion_mastery_by_puuid_url "/lol/champion-mastery/v4/champion-masteries/by-puuid"
+  # @champion_mastery_by_puuid_url "/lol/champion-mastery/v4/champion-masteries/by-puuid"
   @mastery_score_by_puuid "/lol/champion-mastery/v4/scores/by-puuid"
 
   def get_mastery_score_by_puuid(puuid) do

@@ -1,5 +1,5 @@
 defmodule StatDashBack.RiotClient.LeagueV4 do
-  alias StatDashBack.RiotClient.DTO.LeagueEntryDTO
+  alias StatDashBack.RiotClient.DTO.LeagueEntryDto
 
   use StatDashBack.RiotClient.Base
 
@@ -12,7 +12,7 @@ defmodule StatDashBack.RiotClient.LeagueV4 do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         body
         |> Poison.decode!
-        |> Enum.map(&LeagueEntryDTO.from_map/1)
+        |> Enum.map(&LeagueEntryDto.from_map/1)
         |> ok
 
       # catch non-200 status codes
