@@ -14,8 +14,8 @@ defmodule StatDashBackWeb.Resolvers.Match do
   def get_history(%{name: name}, _), do: get_history(:name, name)
 
   def get_history(:puuid, puuid) do
-    with {:ok, match_ids} <- MatchV5.get_match_ids_by_puuid(puuid) |> IO.inspect,
-      {:ok, matches} <- MatchV5.get_matches_by_ids(match_ids) |> IO.inspect do
+    with {:ok, match_ids} <- MatchV5.get_match_ids_by_puuid(puuid),
+      {:ok, matches} <- MatchV5.get_matches_by_ids(match_ids)do
       {:ok, matches}
     else
       {:error, reason} ->
