@@ -21,7 +21,7 @@ config :stat_dash_back, StatDashBackWeb.Endpoint,
   ],
   pubsub_server: StatDashBack.PubSub,
   live_view: [signing_salt: "4RxjC1NH"],
-  origins: ["http://localhost:3000"]
+  origins: ["http://localhost:3000", "http://stat-dash-web:3000"]
 
 config :stat_dash_back,
   riot_api_url_na: "https://na1.api.riotgames.com",

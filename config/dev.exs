@@ -28,7 +28,7 @@ config :stat_dash_back, StatDashBackWeb.Endpoint,
     esbuild: {Esbuild, :install_and_run, [:stat_dash_back, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:stat_dash_back, ~w(--watch)]}
   ],
-  origins: ["http://localhost:3000"]
+  origins: ["http://localhost:3000", "http://stat-dash-web:3000"]
 
 # ## SSL Support
 #
@@ -68,8 +68,3 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
-
-# Riot Client Configuration
-config :stat_dash_back, StatDashBack.RiotClient,
-  api_key: "RGAPI-db0bb91c-a4c1-4d8c-8f96-882ccc68c9dd",
-  base_url: "https://na1.api.riotgames.com"
