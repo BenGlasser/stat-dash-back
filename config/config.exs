@@ -26,7 +26,7 @@ config :stat_dash_back, StatDashBackWeb.Endpoint,
 config :stat_dash_back,
   riot_api_url_na: "https://na1.api.riotgames.com",
   riot_api_url_americas: "https://americas.api.riotgames.com",
-  riot_api_key: System.get_env("RIOT_API_KEY", "RGAPI-b0655b5a-f11a-4570-bab3-8d550d5a69ec")
+  riot_api_key: System.get_env("RIOT_API_KEY", "RGAPI-245adf55-33e3-423f-8a1f-337569089e4b")
 
 # Configures the mailer
 #
