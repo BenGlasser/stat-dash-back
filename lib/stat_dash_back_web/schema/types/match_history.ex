@@ -4,6 +4,16 @@ defmodule StatDashBackWeb.Schema.Types.MatchHistory do
   alias StatDashBackWeb.Resolvers.Match
 
 
+  @desc "Represents the match history, must supply either summoner name or puuid"
+  object :match_history_queries do
+    field :match_history, list_of(:match), description: "The list of matches in the history" do
+      arg :name, :string
+      arg :puuid, :string
+
+      resolve &Match.get_history/2
+    end
+  end
+
   @desc "Represents a match in the match history"
   object :match do
     field :info, :info, description: "Match information"
@@ -64,16 +74,6 @@ defmodule StatDashBackWeb.Schema.Types.MatchHistory do
   object :objective do
           field :first, :boolean, description: "The first objective"
           field :kills, :integer, description: "The number of kills"
-  end
-
-  @desc "Represents the match history, must supply either summoner name or puuid"
-  object :match_history_queries do
-    field :match_history, list_of(:match), description: "The list of matches in the history" do
-      arg :name, :string
-      arg :puuid, :string
-
-      resolve &Match.get_history/2
-    end
   end
 
   @desc "Represents a participant in a match"
